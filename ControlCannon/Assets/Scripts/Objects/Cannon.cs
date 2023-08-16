@@ -50,6 +50,7 @@ public class Cannon : MonoBehaviour
         {
             var mob = _tempObjectPool.GetObject();
             mob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
+            mob.SetActive(true);
             yield return new WaitForSeconds(_createDelayTime);
         }
     }

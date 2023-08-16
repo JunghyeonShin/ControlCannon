@@ -39,6 +39,7 @@ public class ObjectPool
         var go = GameObject.Instantiate(_origin);
         go.transform.SetParent(_parent.transform);
         _InitTransform(go);
+        go.SetActive(false);
         return go;
     }
 
