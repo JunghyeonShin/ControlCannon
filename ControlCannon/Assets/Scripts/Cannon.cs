@@ -6,16 +6,57 @@ using UnityEngine.EventSystems;
 public class Cannon : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 2.5f;
+    [SerializeField] private float _createDelayTime = 2f;
 
     private DragHandler _dragHandler;
 
+    private bool _createMob;
+
     private const float MAX_HORIZONTAL_MOVE_VALUE = 7f;
+    private const float ADJUST_MOB_SPAWN_POINT = 3f;
+
+    private ObjectPool _tempObjectPool;
+    private const string RESOURCE_MOB = "Objects/Mob";
+    private const string OBJECT_POOL = "[OBJECT_POOL]";
+    private const int CREATE_MOB_COUNT = 150;
 
     private void Start()
     {
         _dragHandler = gameObject.AddComponent<DragHandler>();
         _dragHandler.OnDragHandler -= _MoveHorizontal;
         _dragHandler.OnDragHandler += _MoveHorizontal;
+
+        _dragHandler.OnBeginDragHandler -= _StartCreateMob;
+        _dragHandler.OnBeginDragHandler += _StartCreateMob;
+        _dragHandler.OnEndDragHandler -= _StopCreatingMob;
+        _dragHandler.OnEndDragHandler += _StopCreatingMob;
+
+        var mob = Resources.Load<GameObject>(RESOURCE_MOB);
+        var parent = new GameObject(OBJECT_POOL);
+
+        _tempObjectPool = new ObjectPool();
+        _tempObjectPool.InitPool(mob, parent, CREATE_MOB_COUNT);
+    }
+
+    private void _StartCreateMob()
+    {
+        _createMob = true;
+        StartCoroutine(_CreateMob());
+    }
+
+    private IEnumerator _CreateMob()
+    {
+        while (_createMob)
+        {
+            var mob = _tempObjectPool.GetObject();
+            mob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
+            yield return new WaitForSeconds(_createDelayTime);
+        }
+    }
+
+    private void _StopCreatingMob()
+    {
+        _createMob = false;
     }
 
     private void _MoveHorizontal(PointerEventData eventData)
