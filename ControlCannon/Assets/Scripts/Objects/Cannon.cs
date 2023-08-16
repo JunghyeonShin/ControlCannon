@@ -9,6 +9,7 @@ public class Cannon : MonoBehaviour
     [SerializeField] private float _createDelayTime = 2f;
 
     private DragHandler _dragHandler;
+    private PointerHandler _selectHandler;
 
     private bool _createMob;
 
@@ -26,10 +27,11 @@ public class Cannon : MonoBehaviour
         _dragHandler.OnDragHandler -= _MoveHorizontal;
         _dragHandler.OnDragHandler += _MoveHorizontal;
 
-        _dragHandler.OnBeginDragHandler -= _StartCreateMob;
-        _dragHandler.OnBeginDragHandler += _StartCreateMob;
-        _dragHandler.OnEndDragHandler -= _StopCreatingMob;
-        _dragHandler.OnEndDragHandler += _StopCreatingMob;
+        _selectHandler = gameObject.AddComponent<PointerHandler>();
+        _selectHandler.OnPointerDownHandler -= _StartCreateMob;
+        _selectHandler.OnPointerDownHandler += _StartCreateMob;
+        _selectHandler.OnPointerUpHandler -= _StopCreatingMob;
+        _selectHandler.OnPointerUpHandler += _StopCreatingMob;
 
         var mob = Resources.Load<GameObject>(RESOURCE_MOB);
         var parent = new GameObject(OBJECT_POOL);
