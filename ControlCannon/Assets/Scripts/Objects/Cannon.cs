@@ -16,11 +16,6 @@ public class Cannon : MonoBehaviour
     private const float MAX_HORIZONTAL_MOVE_VALUE = 7f;
     private const float ADJUST_MOB_SPAWN_POINT = 3f;
 
-    private ObjectPool _tempObjectPool;
-    private const string RESOURCE_MOB = "Objects/Mob";
-    private const string OBJECT_POOL = "[OBJECT_POOL]";
-    private const int CREATE_MOB_COUNT = 150;
-
     private void Start()
     {
         _dragHandler = gameObject.AddComponent<DragHandler>();
@@ -32,12 +27,6 @@ public class Cannon : MonoBehaviour
         _selectHandler.OnPointerDownHandler += _StartCreateMob;
         _selectHandler.OnPointerUpHandler -= _StopCreatingMob;
         _selectHandler.OnPointerUpHandler += _StopCreatingMob;
-
-        var mob = Resources.Load<GameObject>(RESOURCE_MOB);
-        var parent = new GameObject(OBJECT_POOL);
-
-        _tempObjectPool = new ObjectPool();
-        _tempObjectPool.InitPool(mob, parent, CREATE_MOB_COUNT);
     }
 
     private void _StartCreateMob()
@@ -50,7 +39,7 @@ public class Cannon : MonoBehaviour
     {
         while (_createMob)
         {
-            var mob = _tempObjectPool.GetObject();
+            var mob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
             mob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
             mob.SetActive(true);
             yield return new WaitForSeconds(_createDelayTime);
