@@ -7,7 +7,7 @@ public class Castle : MonoBehaviour
     [SerializeField] private float _totalCreateDelayTime;
     [SerializeField] private float _individualCreateDelayTime = 0.1f;
     [SerializeField] private float _health;
-    [SerializeField] private int _createEnemyMobCount = 10;
+    [SerializeField] private int _createEnemyMobCount = 5;
 
     private Coroutine _createMobCoroutine;
 
@@ -32,11 +32,10 @@ public class Castle : MonoBehaviour
 
             for (int ii = 0; ii < _createEnemyMobCount; ++ii)
             {
-                var enemyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
+                var enemyMob = Manager.Instance.Object.GetObject(EObjectTypes.EnemyMob);
                 enemyMob.transform.localPosition = transform.localPosition + transform.forward;
                 enemyMob.transform.localRotation = transform.localRotation;
-                var enemyMobController = Utils.GetOrAddComponent<MobController>(enemyMob);
-                enemyMobController.SetTag(Define.TAG_ENEMY_MOB);
+                Utils.GetOrAddComponent<EnemyMobController>(enemyMob);
                 enemyMob.SetActive(true);
                 yield return YieldInstructionContainer.GetWaitForSeconds(_individualCreateDelayTime);
             }

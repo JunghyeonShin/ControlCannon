@@ -30,7 +30,7 @@ public class ObjectPool
 
     public void ReturnObject(GameObject go)
     {
-        _InitTransform(go);
+        Utils.InitTransform(go);
         _pool.Enqueue(go);
     }
 
@@ -38,15 +38,8 @@ public class ObjectPool
     {
         var go = GameObject.Instantiate(_origin);
         go.transform.SetParent(_parent.transform);
-        _InitTransform(go);
+        Utils.InitTransform(go);
         go.SetActive(false);
         return go;
-    }
-
-    private void _InitTransform(GameObject go)
-    {
-        go.transform.localPosition = Vector3.zero;
-        go.transform.localRotation = Quaternion.identity;
-        go.transform.localScale = Vector3.one;
     }
 }

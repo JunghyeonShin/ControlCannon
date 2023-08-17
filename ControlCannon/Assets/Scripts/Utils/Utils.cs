@@ -11,4 +11,11 @@ public class Utils : MonoBehaviour
             component = go.AddComponent<T>();
         return component;
     }
+
+    public static void InitTransform(GameObject go)
+    {
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localRotation = Quaternion.identity;
+        go.transform.localScale = Vector3.one;
+    }
 }

@@ -26,8 +26,7 @@ public class Gate : MonoBehaviour
             {
                 var replicaMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
                 replicaMob.transform.localPosition = other.transform.localPosition + other.transform.forward;
-                var replicaMobController = Utils.GetOrAddComponent<MobController>(replicaMob);
-                replicaMobController.SetTag(Define.TAG_MOB);
+                Utils.GetOrAddComponent<AllyMobController>(replicaMob);
                 replicaMob.SetActive(true);
             }
         }

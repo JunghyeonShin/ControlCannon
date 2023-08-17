@@ -5,6 +5,7 @@ using UnityEngine;
 public enum EObjectTypes
 {
     Mob,
+    EnemyMob,
 
     COUNT,
     None = COUNT
@@ -29,11 +30,18 @@ public class ObjectManager
         var mob = Resources.Load<GameObject>(RESOURCE_MOB);
         var parent = new GameObject(OBJECT_POOL);
         _objectsDic[EObjectTypes.Mob].InitPool(mob, parent, CREATE_MOB_COUNT);
+        _objectsDic[EObjectTypes.EnemyMob].InitPool(mob, parent, CREATE_MOB_COUNT);
         #endregion
     }
 
     public GameObject GetObject(EObjectTypes type)
     {
         return _objectsDic[type].GetObject();
+    }
+
+    public void ReturnObject(EObjectTypes type, GameObject go)
+    {
+        Utils.InitTransform(go);
+        _objectsDic[type].ReturnObject(go);
     }
 }
