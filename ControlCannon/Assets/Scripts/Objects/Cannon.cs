@@ -10,6 +10,7 @@ public class Cannon : MonoBehaviour
 
     private DragHandler _dragHandler;
     private PointerHandler _selectHandler;
+    private Coroutine _createMobCoroutine;
 
     private bool _createMob;
 
@@ -29,10 +30,19 @@ public class Cannon : MonoBehaviour
         _selectHandler.OnPointerUpHandler += _StopCreatingMob;
     }
 
+    private void _MoveHorizontal(PointerEventData eventData)
+    {
+        var x = eventData.delta.x * _moveSpeed * Time.deltaTime;
+        x = Mathf.Clamp(transform.localPosition.x + x, -MAX_HORIZONTAL_MOVE_VALUE, MAX_HORIZONTAL_MOVE_VALUE);
+        transform.localPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
+    }
+
     private void _StartCreateMob()
     {
         _createMob = true;
-        StartCoroutine(_CreateMob());
+
+        if (null == _createMobCoroutine)
+            _createMobCoroutine = StartCoroutine(_CreateMob());
     }
 
     private IEnumerator _CreateMob()
@@ -44,17 +54,12 @@ public class Cannon : MonoBehaviour
             mob.SetActive(true);
             yield return new WaitForSeconds(_createDelayTime);
         }
+
+        _createMobCoroutine = null;
     }
 
     private void _StopCreatingMob()
     {
         _createMob = false;
-    }
-
-    private void _MoveHorizontal(PointerEventData eventData)
-    {
-        var x = eventData.delta.x * _moveSpeed * Time.deltaTime;
-        x = Mathf.Clamp(transform.localPosition.x + x, -MAX_HORIZONTAL_MOVE_VALUE, MAX_HORIZONTAL_MOVE_VALUE);
-        transform.localPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
     }
 }
