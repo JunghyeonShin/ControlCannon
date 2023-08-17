@@ -6,8 +6,7 @@ using UnityEngine;
 public class Gate : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
-
-    private int _randomNumber;
+    [Range(MIN_MULTIPLY_NUMBER, MAX_MULTIPLY_NUMBER)][SerializeField] private int _randomNumber;
 
     private const string TAG_MOB = "Mob";
     private const int MIN_MULTIPLY_NUMBER = 2;
