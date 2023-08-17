@@ -14,6 +14,7 @@ public class EnemyMobController : MobController
     protected override void OnEnable()
     {
         _health = 10f;
+        _collider.isTrigger = false;
     }
 
     protected override void OnDisable()
