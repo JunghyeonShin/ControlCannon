@@ -51,6 +51,8 @@ public class Cannon : MonoBehaviour
         {
             var mob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
             mob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
+            var mobController = Utils.GetOrAddComponent<MobController>(mob);
+            mobController.SetTag(Define.TAG_MOB);
             mob.SetActive(true);
             yield return YieldInstructionContainer.GetWaitForSeconds(_createDelayTime);
         }

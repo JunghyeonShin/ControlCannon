@@ -8,7 +8,6 @@ public class Gate : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
     [Range(MIN_MULTIPLY_NUMBER, MAX_MULTIPLY_NUMBER)][SerializeField] private int _randomNumber;
 
-    private const string TAG_MOB = "Mob";
     private const int MIN_MULTIPLY_NUMBER = 2;
     private const int MAX_MULTIPLY_NUMBER = 5;
     private const int SELF = 1;
@@ -21,13 +20,15 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(TAG_MOB))
+        if (other.CompareTag(Define.TAG_MOB))
         {
             for (int ii = 0; ii < _randomNumber - SELF; ++ii)
             {
-                var replica = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
-                replica.transform.localPosition = other.transform.localPosition + other.transform.forward;
-                replica.SetActive(true);
+                var replicaMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
+                replicaMob.transform.localPosition = other.transform.localPosition + other.transform.forward;
+                var replicaMobController = Utils.GetOrAddComponent<MobController>(replicaMob);
+                replicaMobController.SetTag(Define.TAG_MOB);
+                replicaMob.SetActive(true);
             }
         }
     }
