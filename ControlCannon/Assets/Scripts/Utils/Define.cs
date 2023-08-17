@@ -10,4 +10,5 @@ public class Define
     //Tag
     public const string TAG_MOB = "Mob";
     public const string TAG_ENEMY_MOB = "EnemyMob";
+    public const string TAG_ENEMY_CASTLE = "EnemyCastle";
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AllyMobController : MobController
 {
+    private ICastleController _targetCastle;
+
     protected override void Awake()
     {
         base.Awake();
@@ -28,15 +30,26 @@ public class AllyMobController : MobController
         _rigidbody.velocity = moveVec;
     }
 
-    protected override void _FindTargetMob(Collision collision)
+    protected override void _FindTarget(Collision collision)
     {
-        if (null != _targetMob)
+        if (null != _targetCastle || null != _targetMob)
             return;
 
-        if (collision.gameObject.CompareTag(Define.TAG_ENEMY_MOB))
+        if (collision.gameObject.CompareTag(Define.TAG_ENEMY_CASTLE))
+        {
+            _targetCastle = collision.gameObject.GetComponent<ICastleController>();
+            _AttackTargetCastle();
+        }
+        else if (collision.gameObject.CompareTag(Define.TAG_ENEMY_MOB))
         {
             _targetMob = collision.gameObject.GetComponent<IMobController>();
             _AttackTargetMob();
         }
+    }
+
+    private void _AttackTargetCastle()
+    {
+        _targetCastle.OnDamage();
+        gameObject.SetActive(false);
     }
 }

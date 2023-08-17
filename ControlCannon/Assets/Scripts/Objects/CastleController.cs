@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Castle : MonoBehaviour
+public interface ICastleController
+{
+    public void OnDamage();
+}
+
+public class CastleController : MonoBehaviour, ICastleController
 {
     [SerializeField] private float _totalCreateDelayTime;
     [SerializeField] private float _individualCreateDelayTime = 0.1f;
@@ -11,7 +16,7 @@ public class Castle : MonoBehaviour
 
     private Coroutine _createMobCoroutine;
 
-    public bool IsAlive { get { return _health > 0f; } }
+    public const int DAMAGED_VALUE = 1;
 
     private void OnEnable()
     {
@@ -24,9 +29,18 @@ public class Castle : MonoBehaviour
         _StopCreateMobCoroutine();
     }
 
+    public void OnDamage()
+    {
+        _health -= DAMAGED_VALUE;
+        if (_health <= 0f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     private IEnumerator _CreateMob()
     {
-        while (IsAlive)
+        while (_health > 0f)
         {
             yield return YieldInstructionContainer.GetWaitForSeconds(_totalCreateDelayTime);
 

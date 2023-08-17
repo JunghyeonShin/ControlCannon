@@ -32,7 +32,7 @@ public abstract class MobController : MonoBehaviour, IMobController
 
     private void OnCollisionEnter(Collision collision)
     {
-        _FindTargetMob(collision);
+        _FindTarget(collision);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -58,7 +58,7 @@ public abstract class MobController : MonoBehaviour, IMobController
                 StopCoroutine(_deadCoroutine);
                 _deadCoroutine = null;
             }
-            StartCoroutine(_OnDead());
+            _deadCoroutine = StartCoroutine(_OnDead());
 
             OnDeadCallback?.Invoke();
         }
@@ -66,7 +66,7 @@ public abstract class MobController : MonoBehaviour, IMobController
 
     protected abstract void _MoveMob();
 
-    protected abstract void _FindTargetMob(Collision collision);
+    protected abstract void _FindTarget(Collision collision);
 
     protected void _AttackTargetMob()
     {
