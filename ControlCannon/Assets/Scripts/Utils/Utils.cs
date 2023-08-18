@@ -12,6 +12,27 @@ public class Utils : MonoBehaviour
         return component;
     }
 
+    public static T FindChild<T>(GameObject go, string name) where T : UnityEngine.Object
+    {
+        if (null == go)
+            return null;
+
+        foreach (T component in go.GetComponentsInChildren<T>())
+        {
+            if (component.name.Equals(name))
+                return component;
+        }
+        return null;
+    }
+
+    public static GameObject FindChild(GameObject go, string name)
+    {
+        var transform = FindChild<Transform>(go, name);
+        if (null != transform)
+            return transform.gameObject;
+        return null;
+    }
+
     public static void InitTransform(GameObject go)
     {
         go.transform.localPosition = Vector3.zero;

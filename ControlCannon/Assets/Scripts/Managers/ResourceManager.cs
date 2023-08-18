@@ -14,4 +14,16 @@ public class ResourceManager
         obj = Resources.Load<T>(key);
         return obj as T;
     }
+
+    public GameObject Instantiate(string key, GameObject parent = null)
+    {
+        var prefab = Load<GameObject>(key);
+        var go = GameObject.Instantiate(prefab);
+        if (null != parent)
+        {
+            go.transform.SetParent(parent.transform);
+            Utils.InitTransform(go);
+        }
+        return go;
+    }
 }

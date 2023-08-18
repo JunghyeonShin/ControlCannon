@@ -15,8 +15,6 @@ public class ObjectManager
 {
     private Dictionary<EObjectTypes, ObjectPool> _objectsDic;
 
-    private const string RESOURCE_MOB = "Objects/Mob";
-    private const string OBJECT_POOL = "[OBJECT_POOL]";
     private const int CREATE_MOB_COUNT = 150;
 
     public void Init()
@@ -27,8 +25,8 @@ public class ObjectManager
             _objectsDic.Add(ii, new ObjectPool());
 
         #region TEMP
-        var mob = Manager.Instance.Resource.Load<GameObject>(RESOURCE_MOB);
-        var parent = new GameObject(OBJECT_POOL);
+        var mob = Manager.Instance.Resource.Load<GameObject>(Define.RESOURCE_MOB);
+        var parent = new GameObject(Define.OBJECT_POOL);
         _objectsDic[EObjectTypes.Mob].InitPool(mob, parent, CREATE_MOB_COUNT);
         _objectsDic[EObjectTypes.EnemyMob].InitPool(mob, parent, CREATE_MOB_COUNT);
         #endregion
