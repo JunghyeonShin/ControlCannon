@@ -18,8 +18,6 @@ public class UI_Title : UI_Base
 
     private void _OnClickPlayButton()
     {
-        #region TEMP
-        Debug.Log("Play");
-        #endregion
+        Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE);
     }
 }

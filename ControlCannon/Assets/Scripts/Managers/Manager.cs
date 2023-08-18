@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    private ResourceManager _resource;
     private ObjectManager _object;
+    private ResourceManager _resource;
+    private UIManager _uI;
 
-    public ResourceManager Resource { get { return _resource; } }
     public ObjectManager Object { get { return _object; } }
+    public ResourceManager Resource { get { return _resource; } }
+    public UIManager UI { get { return _uI; } }
 
     private void Awake()
     {
@@ -16,8 +18,10 @@ public class Manager : MonoBehaviour
 
         _resource = new ResourceManager();
         _object = new ObjectManager();
+        _uI = new UIManager();
 
         _object.Init();
+        _uI.Init();
     }
 
     #region Instance

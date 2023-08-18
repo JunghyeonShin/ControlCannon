@@ -34,8 +34,6 @@ public class UI_SelectStage : UI_Base
 
     private void _OnClickBackButton()
     {
-        #region TEMP
-        Debug.Log("Back");
-        #endregion
+        Manager.Instance.UI.ShowUI<UI_Title>(Define.RESOURCE_UI_TITLE);
     }
 }

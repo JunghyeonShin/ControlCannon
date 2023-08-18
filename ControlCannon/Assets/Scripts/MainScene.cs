@@ -8,4 +8,9 @@ public class MainScene : MonoBehaviour
     {
         Manager.CreateInstance();
     }
+
+    private void Start()
+    {
+        Manager.Instance.UI.ShowUI<UI_Title>(Define.RESOURCE_UI_TITLE);
+    }
 }

@@ -6,6 +6,7 @@ public class Define
 {
     //Object Name
     public const string MANAGER = "[MANAGER]";
+    public const string ROOT_UI = "[ROOT_UI]";
     public const string OBJECT_POOL = "[OBJECT_POOL]";
 
     //Tag
@@ -15,5 +16,7 @@ public class Define
 
     //Resource
     public const string RESOURCE_MOB = "Objects/Mob";
+    public const string RESOURCE_UI_TITLE = "UIs/UI_Title";
+    public const string RESOURCE_UI_SELECT_STAGE = "UIs/UI_SelectStage";
     public const string RESOURCE_UI_STAGE_BUTTON = "UIs/UI_StageButton";
 }
