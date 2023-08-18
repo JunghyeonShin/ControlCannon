@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    private ResourceManager _resource;
     private ObjectManager _object;
 
+    public ResourceManager Resource { get { return _resource; } }
     public ObjectManager Object { get { return _object; } }
 
     private void Awake()
     {
         CreateInstance();
 
+        _resource = new ResourceManager();
         _object = new ObjectManager();
+
         _object.Init();
     }
 
@@ -21,8 +25,11 @@ public class Manager : MonoBehaviour
 
     public static Manager Instance { get { return _instance; } }
 
-    public void CreateInstance()
+    public static void CreateInstance()
     {
+        if (null != _instance)
+            return;
+
         if (null == _instance)
             _instance = GameObject.FindObjectOfType<Manager>();
         if (null == _instance)
@@ -30,7 +37,7 @@ public class Manager : MonoBehaviour
             var go = new GameObject(Define.MANAGER);
             _instance = go.AddComponent<Manager>();
         }
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(_instance.gameObject);
     }
     #endregion
 }

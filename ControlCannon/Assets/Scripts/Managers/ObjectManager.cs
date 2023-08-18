@@ -27,7 +27,7 @@ public class ObjectManager
             _objectsDic.Add(ii, new ObjectPool());
 
         #region TEMP
-        var mob = Resources.Load<GameObject>(RESOURCE_MOB);
+        var mob = Manager.Instance.Resource.Load<GameObject>(RESOURCE_MOB);
         var parent = new GameObject(OBJECT_POOL);
         _objectsDic[EObjectTypes.Mob].InitPool(mob, parent, CREATE_MOB_COUNT);
         _objectsDic[EObjectTypes.EnemyMob].InitPool(mob, parent, CREATE_MOB_COUNT);
