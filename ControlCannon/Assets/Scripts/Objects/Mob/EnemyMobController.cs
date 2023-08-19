@@ -28,7 +28,7 @@ public class EnemyMobController : MobController
         _rigidbody.velocity = moveVec;
     }
 
-    protected override void _FindTarget(Collision collision)
+    protected override void _AttackTarget(Collision collision)
     {
         if (null != _targetMob)
             return;

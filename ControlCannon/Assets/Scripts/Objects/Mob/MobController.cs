@@ -32,7 +32,7 @@ public abstract class MobController : MonoBehaviour, IMobController
 
     private void OnCollisionEnter(Collision collision)
     {
-        _FindTarget(collision);
+        _AttackTarget(collision);
     }
 
     private void OnCollisionExit(Collision collision)
@@ -66,7 +66,7 @@ public abstract class MobController : MonoBehaviour, IMobController
 
     protected abstract void _MoveMob();
 
-    protected abstract void _FindTarget(Collision collision);
+    protected abstract void _AttackTarget(Collision collision);
 
     protected void _AttackTargetMob()
     {

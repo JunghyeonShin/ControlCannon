@@ -33,12 +33,18 @@ public class GateController : MonoBehaviour
     {
         if (other.CompareTag(Define.TAG_MOB))
         {
+            var allyMobController = other.gameObject.GetComponent<AllyMobController>();
+            if (allyMobController.IsPassedGate(LoadIndex))
+                return;
+
+            allyMobController.PassGate(LoadIndex);
             for (int ii = 0; ii < _multiplier - SELF; ++ii)
             {
-                var replicaMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
-                replicaMob.transform.localPosition = other.transform.localPosition + other.transform.forward;
-                Utils.GetOrAddComponent<AllyMobController>(replicaMob);
-                replicaMob.SetActive(true);
+                var replicaAllyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
+                replicaAllyMob.transform.localPosition = other.transform.localPosition + other.transform.forward;
+                var replicaAllyMobController = Utils.GetOrAddComponent<AllyMobController>(replicaAllyMob);
+                replicaAllyMob.SetActive(true);
+                replicaAllyMobController.PassGate(LoadIndex);
             }
         }
     }

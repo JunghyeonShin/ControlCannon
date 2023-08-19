@@ -125,10 +125,11 @@ public class CannonController : MonoBehaviour, ICannonController
     {
         while (_createMob)
         {
-            var mob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
-            mob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
-            Utils.GetOrAddComponent<AllyMobController>(mob);
-            mob.SetActive(true);
+            var allyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
+            allyMob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
+            var allyMobController = Utils.GetOrAddComponent<AllyMobController>(allyMob);
+            allyMob.SetActive(true);
+            allyMobController.InitGate();
             yield return YieldInstructionContainer.GetWaitForSeconds(_createDelayTime);
         }
 
