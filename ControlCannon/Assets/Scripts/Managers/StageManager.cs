@@ -8,9 +8,22 @@ public class StageManager
 {
     private List<Stage> _stagesList;
 
+    private int _currentStageIndex = -1;
+
+    public Stage CurrentStageInfo
+    {
+        get
+        {
+            if (NON_STAGE_INDEX == _currentStageIndex)
+                return null;
+            return _stagesList[_currentStageIndex];
+        }
+    }
+
     private const string STAGE_STORAGE_PATH = "/Resources/Stages";
     private const string ANY_JSON_FILE = "*.json";
     private const string JSON_FILE = ".json";
+    private const int NON_STAGE_INDEX = -1;
 
     public void Init()
     {
@@ -37,6 +50,22 @@ public class StageManager
                     _stagesList.Add(stage);
                 }
             }
+        }
+    }
+
+    public void LoadStage(int stageIndex)
+    {
+        //_currentStageIndex = stageIndex;
+        #region TEMP
+        _currentStageIndex = 0;
+        #endregion
+        Manager.Instance.Object.Castle.SetActive(true);
+        for (int ii = 0; ii < _stagesList[_currentStageIndex].gates.Length; ++ii)
+        {
+            var gate = Manager.Instance.Object.GetObject(EObjectTypes.Gate);
+            var gateController = Utils.GetOrAddComponent<GateController>(gate);
+            gateController.LoadIndex = ii;
+            gate.SetActive(true);
         }
     }
 }

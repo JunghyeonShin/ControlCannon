@@ -16,6 +16,8 @@ public class UI_StageButton : UI_Base
 
     private int _stageIndex = -1;
 
+    private const int ADJUST_INDEX = 1;
+
     protected override void _Init()
     {
         _BindButton(typeof(EButtons));
@@ -26,14 +28,14 @@ public class UI_StageButton : UI_Base
 
     public void SetStageIndex(int stageIndex)
     {
-        _stageIndex = stageIndex;
-        _GetText((int)ETexts.StageText).text = $"{_stageIndex + 1}";
+        _stageIndex = stageIndex + ADJUST_INDEX;
+        _GetText((int)ETexts.StageText).text = $"{_stageIndex}";
     }
 
     private void _OnClickStageButton()
     {
-        #region TEMP
-        Debug.Log($"OnStage : {_stageIndex + 1}");
-        #endregion
+        Manager.Instance.UI.ShowUI<UI_Ingame>(Define.RESOURCE_UI_INGAME);
+        Manager.Instance.Stage.LoadStage(_stageIndex);
+        Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Shoot;
     }
 }

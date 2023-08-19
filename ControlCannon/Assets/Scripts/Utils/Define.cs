@@ -8,6 +8,7 @@ public class Define
     public const string MANAGER = "[MANAGER]";
     public const string ROOT_UI = "[ROOT_UI]";
     public const string ROOT_CANNON = "[ROOT_CANNON]";
+    public const string ROOT_CASTLE = "[ROOT_CASTLE]";
     public const string OBJECT_POOL = "[OBJECT_POOL]";
 
     //Tag
@@ -17,8 +18,11 @@ public class Define
 
     //Resource
     public const string RESOURCE_CANNON = "Objects/Cannon";
+    public const string RESOURCE_CASTLE = "Objects/Castle";
     public const string RESOURCE_MOB = "Objects/Mob";
+    public const string RESOURCE_GATE = "Objects/Gate";
     public const string RESOURCE_UI_TITLE = "UIs/UI_Title";
     public const string RESOURCE_UI_SELECT_STAGE = "UIs/UI_SelectStage";
     public const string RESOURCE_UI_STAGE_BUTTON = "UIs/UI_StageButton";
+    public const string RESOURCE_UI_INGAME = "UIs/UI_Ingame";
 }

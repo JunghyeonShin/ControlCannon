@@ -5,24 +5,35 @@ using UnityEngine;
 
 public class GateController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _text;
-    [Range(MIN_MULTIPLY_NUMBER, MAX_MULTIPLY_NUMBER)][SerializeField] private int _randomNumber;
+    private TextMeshProUGUI _multiplierText;
+    private int _multiplier;
 
-    private const int MIN_MULTIPLY_NUMBER = 2;
-    private const int MAX_MULTIPLY_NUMBER = 5;
+    public int LoadIndex { get; set; }
+
+    private const string MULTIPLIER_OBJECT_NAME = "Multiplier";
     private const int SELF = 1;
+
+    private void Awake()
+    {
+        _multiplierText = Utils.FindChild<TextMeshProUGUI>(gameObject, MULTIPLIER_OBJECT_NAME);
+    }
 
     private void OnEnable()
     {
-        _randomNumber = Random.Range(MIN_MULTIPLY_NUMBER, MAX_MULTIPLY_NUMBER);
-        _text.text = $"X{_randomNumber}";
+        var currentStageInfo = Manager.Instance.Stage.CurrentStageInfo;
+        if (null == currentStageInfo)
+            return;
+
+        transform.localPosition = currentStageInfo.gates[LoadIndex].gatePosition;
+        _multiplier = currentStageInfo.gates[LoadIndex].multiplier;
+        _multiplierText.text = $"X{_multiplier}";
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Define.TAG_MOB))
         {
-            for (int ii = 0; ii < _randomNumber - SELF; ++ii)
+            for (int ii = 0; ii < _multiplier - SELF; ++ii)
             {
                 var replicaMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
                 replicaMob.transform.localPosition = other.transform.localPosition + other.transform.forward;
@@ -30,5 +41,10 @@ public class GateController : MonoBehaviour
                 replicaMob.SetActive(true);
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        Manager.Instance.Object.ReturnObject(EObjectTypes.Gate, gameObject);
     }
 }

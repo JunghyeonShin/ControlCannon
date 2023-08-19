@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CannonController : MonoBehaviour
+public enum ECannonStates
 {
-    private enum EStateTypes
-    {
-        None,
-        Ready,
-        Shoot
-    }
+    None,
+    Ready,
+    Shoot
+}
 
+public interface ICannonController
+{
+    public ECannonStates CannonState { get; set; }
+}
+
+public class CannonController : MonoBehaviour, ICannonController
+{
     [SerializeField] private Transform _cannonLowerBody;
     [SerializeField] private float _arrivalTime = 2f;
     [SerializeField] private float _rotateTime = 1f;
@@ -22,11 +27,11 @@ public class CannonController : MonoBehaviour
     private DragHandler _dragHandler;
     private PointerHandler _selectHandler;
 
-    private EStateTypes _cannonState;
-
     private Coroutine _readyToPlayModeCoroutine;
     private Coroutine _createMobCoroutine;
     private bool _createMob;
+
+    public ECannonStates CannonState { get; set; }
 
     private const float MAX_HORIZONTAL_MOVE_VALUE = 7f;
     private const float ADJUST_MOB_SPAWN_POINT = 3f;
@@ -50,7 +55,7 @@ public class CannonController : MonoBehaviour
 
     private void OnEnable()
     {
-        _cannonState = EStateTypes.Ready;
+        CannonState = ECannonStates.Ready;
         if (null != _readyToPlayModeCoroutine)
         {
             StopCoroutine(_readyToPlayModeCoroutine);
@@ -97,7 +102,7 @@ public class CannonController : MonoBehaviour
 
     private void _MoveHorizontal(PointerEventData eventData)
     {
-        if (EStateTypes.Shoot != _cannonState)
+        if (ECannonStates.Shoot != CannonState)
             return;
 
         var x = eventData.delta.x * _moveSpeed * Time.deltaTime;
@@ -107,7 +112,7 @@ public class CannonController : MonoBehaviour
 
     private void _StartCreateMob()
     {
-        if (EStateTypes.Shoot != _cannonState)
+        if (ECannonStates.Shoot != CannonState)
             return;
 
         _createMob = true;
@@ -132,7 +137,7 @@ public class CannonController : MonoBehaviour
 
     private void _StopCreatingMob()
     {
-        if (EStateTypes.Shoot != _cannonState)
+        if (ECannonStates.Shoot != CannonState)
             return;
 
         _createMob = false;

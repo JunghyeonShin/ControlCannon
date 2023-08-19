@@ -125,7 +125,6 @@ GameObject:
   m_Component:
   - component: {fileID: 907616166779674633}
   - component: {fileID: 2505163374270581835}
-  - component: {fileID: 5393350917238673448}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -148,7 +147,7 @@ Transform:
   - {fileID: 4476509586713693365}
   - {fileID: 4517045145592893534}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2505163374270581835
 BoxCollider:
@@ -171,20 +170,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.3, y: 1.66, z: 0.17}
   m_Center: {x: 0, y: 0.76, z: 0}
---- !u!114 &5393350917238673448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6934977798713994474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97d574dd325818d4e96ab1422b68718d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _text: {fileID: 5729326250768739477}
-  _randomNumber: 0
 --- !u!1 &7018129769262275502
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +182,7 @@ GameObject:
   - component: {fileID: 7851514469575141499}
   - component: {fileID: 5729326250768739477}
   m_Layer: 0
-  m_Name: MultiplyNumber
+  m_Name: Multiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

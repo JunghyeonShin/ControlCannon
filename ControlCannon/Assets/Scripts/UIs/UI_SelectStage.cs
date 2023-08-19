@@ -18,8 +18,6 @@ public class UI_SelectStage : UI_Base
 
     protected override void _Init()
     {
-        Manager.CreateInstance();
-
         _BindButton(typeof(EButtons));
         _BindGameObject(typeof(EGameObjects));
 

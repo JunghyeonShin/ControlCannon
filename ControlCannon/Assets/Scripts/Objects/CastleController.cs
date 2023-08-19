@@ -16,10 +16,20 @@ public class CastleController : MonoBehaviour, ICastleController
 
     private Coroutine _createMobCoroutine;
 
-    public const int DAMAGED_VALUE = 1;
+    private const int DAMAGED_VALUE = 1;
+
+    private readonly Vector3 DEFAULT_CASTLE_SCALE = new Vector3(0.3f, 0.3f, 0.3f);
 
     private void OnEnable()
     {
+        var currentStageInfo = Manager.Instance.Stage.CurrentStageInfo;
+        if (null == currentStageInfo)
+            return;
+
+        transform.localPosition = Manager.Instance.Stage.CurrentStageInfo.castlePosition;
+        transform.localEulerAngles = Manager.Instance.Stage.CurrentStageInfo.castleRotation;
+        transform.localScale = DEFAULT_CASTLE_SCALE;
+
         _StopCreateMobCoroutine();
         _createMobCoroutine = StartCoroutine(_CreateMob());
     }
@@ -33,9 +43,7 @@ public class CastleController : MonoBehaviour, ICastleController
     {
         _health -= DAMAGED_VALUE;
         if (_health <= 0f)
-        {
             gameObject.SetActive(false);
-        }
     }
 
     private IEnumerator _CreateMob()
