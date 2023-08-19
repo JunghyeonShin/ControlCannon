@@ -7,6 +7,7 @@ public class Define
     //Object Name
     public const string MANAGER = "[MANAGER]";
     public const string ROOT_UI = "[ROOT_UI]";
+    public const string ROOT_CANNON = "[ROOT_CANNON]";
     public const string OBJECT_POOL = "[OBJECT_POOL]";
 
     //Tag
@@ -15,6 +16,7 @@ public class Define
     public const string TAG_ENEMY_CASTLE = "EnemyCastle";
 
     //Resource
+    public const string RESOURCE_CANNON = "Objects/Cannon";
     public const string RESOURCE_MOB = "Objects/Mob";
     public const string RESOURCE_UI_TITLE = "UIs/UI_Title";
     public const string RESOURCE_UI_SELECT_STAGE = "UIs/UI_SelectStage";
