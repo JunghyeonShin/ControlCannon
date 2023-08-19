@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Gate : MonoBehaviour
+public class GateController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
     [Range(MIN_MULTIPLY_NUMBER, MAX_MULTIPLY_NUMBER)][SerializeField] private int _randomNumber;

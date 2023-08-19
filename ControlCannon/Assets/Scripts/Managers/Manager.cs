@@ -6,10 +6,12 @@ public class Manager : MonoBehaviour
 {
     private ObjectManager _object;
     private ResourceManager _resource;
+    private StageManager _stage;
     private UIManager _uI;
 
     public ObjectManager Object { get { return _object; } }
     public ResourceManager Resource { get { return _resource; } }
+    public StageManager Stage { get { return _stage; } }
     public UIManager UI { get { return _uI; } }
 
     private void Awake()
@@ -17,11 +19,13 @@ public class Manager : MonoBehaviour
         CreateInstance();
 
         _resource = new ResourceManager();
-        _object = new ObjectManager();
+        _stage = new StageManager();
         _uI = new UIManager();
+        _object = new ObjectManager();
 
-        _object.Init();
+        _stage.Init();
         _uI.Init();
+        _object.Init();
     }
 
     #region Instance
