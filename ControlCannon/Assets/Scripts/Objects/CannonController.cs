@@ -24,7 +24,7 @@ public class CannonController : MonoBehaviour
 
     private EStateTypes _cannonState;
 
-    private Coroutine _readyToShootModeCoroutine;
+    private Coroutine _readyToPlayModeCoroutine;
     private Coroutine _createMobCoroutine;
     private bool _createMob;
 
@@ -51,19 +51,27 @@ public class CannonController : MonoBehaviour
     private void OnEnable()
     {
         _cannonState = EStateTypes.Ready;
-        if (null != _readyToShootModeCoroutine)
+        if (null != _readyToPlayModeCoroutine)
         {
-            StopCoroutine(_readyToShootModeCoroutine);
-            _readyToShootModeCoroutine = null;
+            StopCoroutine(_readyToPlayModeCoroutine);
+            _readyToPlayModeCoroutine = null;
         }
-        _readyToShootModeCoroutine = StartCoroutine(_ReadyToShootMode());
+        _readyToPlayModeCoroutine = StartCoroutine(_ReadyToPlayMode());
     }
 
-    private IEnumerator _ReadyToShootMode()
+    private IEnumerator _ReadyToPlayMode()
     {
         yield return null;
         transform.localPosition = INIT_SPAWN_POSITION;
         _cannonLowerBody.transform.localEulerAngles = INIT_LOWER_BODY_ANGLE;
+
+        var titleUI = Manager.Instance.UI.GetUI<UI_Title>(Define.RESOURCE_UI_TITLE);
+        while (null == titleUI)
+        {
+            titleUI = Manager.Instance.UI.GetUI<UI_Title>(Define.RESOURCE_UI_TITLE);
+            yield return null;
+        }
+        titleUI.ActivePlayButton(false);
 
         var time = 0f;
         while (time <= _arrivalTime)
@@ -83,7 +91,8 @@ public class CannonController : MonoBehaviour
         }
         _cannonLowerBody.localEulerAngles = Vector3.zero;
 
-        _readyToShootModeCoroutine = null;
+        titleUI.ActivePlayButton(true);
+        _readyToPlayModeCoroutine = null;
     }
 
     private void _MoveHorizontal(PointerEventData eventData)

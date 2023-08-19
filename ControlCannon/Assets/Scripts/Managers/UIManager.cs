@@ -37,6 +37,13 @@ public class UIManager
         callback?.Invoke(_currentUI as T);
     }
 
+    public T GetUI<T>(string path) where T : UI_Base
+    {
+        if (_uIDic.TryGetValue(path, out var uI))
+            return uI as T;
+        return null;
+    }
+
     private void _CloseCurrentUI()
     {
         _currentUI.gameObject.SetActive(false);

@@ -16,6 +16,11 @@ public class UI_Title : UI_Base
         _BindEvent(_GetButton((int)EButtons.PlayButton).gameObject, _OnClickPlayButton);
     }
 
+    public void ActivePlayButton(bool active)
+    {
+        _GetButton((int)EButtons.PlayButton).gameObject.SetActive(active);
+    }
+
     private void _OnClickPlayButton()
     {
         Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE);
