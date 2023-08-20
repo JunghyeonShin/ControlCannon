@@ -35,6 +35,7 @@ public class UI_DefeatStage : UI_Base
     private void _OnClickBackButton()
     {
         Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE);
+        Manager.Instance.Object.CurrentCannon.InitPosition();
     }
 
     private void _OnClickRestartButton()
