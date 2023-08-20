@@ -17,10 +17,14 @@ public class Define
     public const string TAG_ENEMY_CASTLE = "EnemyCastle";
 
     //Resource
-    public const string RESOURCE_CANNON = "Objects/Cannon";
-    public const string RESOURCE_CASTLE = "Objects/Castle";
-    public const string RESOURCE_MOB = "Objects/Mob";
-    public const string RESOURCE_GATE = "Objects/Gate";
+    public const string RESOURCE_MATERIAL_ALLY = "Materials/Ally";
+    public const string RESOURCE_MATERIAL_ENEMY = "Materials/Enemy";
+    public const string RESOURCE_MATERIAL_CANNON = "Materials/Cannon";
+    public const string RESOURCE_MATERIAL_CASTLE = "Materials/Castle";
+    public const string RESOURCE_OBJECT_CANNON = "Objects/Cannon";
+    public const string RESOURCE_OBJECT_CASTLE = "Objects/Castle";
+    public const string RESOURCE_OBJECT_MOB = "Objects/Mob";
+    public const string RESOURCE_OBJECT_GATE = "Objects/Gate";
     public const string RESOURCE_UI_TITLE = "UIs/UI_Title";
     public const string RESOURCE_UI_SELECT_STAGE = "UIs/UI_SelectStage";
     public const string RESOURCE_UI_STAGE_BUTTON = "UIs/UI_StageButton";

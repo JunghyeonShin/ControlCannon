@@ -19,6 +19,10 @@ public class GateController : MonoBehaviour
 
     private void Awake()
     {
+        var gateRenderer = GetComponentInChildren<Renderer>();
+        var allyMaterial = Manager.Instance.Resource.Load<Material>(Define.RESOURCE_MATERIAL_ALLY);
+        gateRenderer.sharedMaterial = allyMaterial;
+
         _multiplierText = Utils.FindChild<TextMeshProUGUI>(gameObject, MULTIPLIER_OBJECT_NAME);
     }
 

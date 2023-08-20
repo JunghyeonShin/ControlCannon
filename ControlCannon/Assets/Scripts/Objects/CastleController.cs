@@ -26,6 +26,14 @@ public class CastleController : MonoBehaviour, ICastleController
 
     private readonly Vector3 DEFAULT_CASTLE_SCALE = new Vector3(0.3f, 0.3f, 0.3f);
 
+    private void Awake()
+    {
+        var castleRenderers = GetComponentsInChildren<Renderer>();
+        var castleMaterial = Manager.Instance.Resource.Load<Material>(Define.RESOURCE_MATERIAL_CASTLE);
+        foreach (var renderer in castleRenderers)
+            renderer.sharedMaterial = castleMaterial;
+    }
+
     private void OnEnable()
     {
         var currentStageInfo = Manager.Instance.Stage.CurrentStageInfo;

@@ -43,6 +43,11 @@ public class CannonController : MonoBehaviour, ICannonController
 
     private void Awake()
     {
+        var cannonRenderers = GetComponentsInChildren<Renderer>();
+        var cannonMaterial = Manager.Instance.Resource.Load<Material>(Define.RESOURCE_MATERIAL_CANNON);
+        foreach (var renderer in cannonRenderers)
+            renderer.sharedMaterial = cannonMaterial;
+
         _dragHandler = gameObject.AddComponent<DragHandler>();
         _dragHandler.OnDragHandler -= _MoveHorizontal;
         _dragHandler.OnDragHandler += _MoveHorizontal;

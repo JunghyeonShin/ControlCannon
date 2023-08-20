@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cannonLowerBody: {fileID: 7009653363297626532}
+  _cannonUpperBodyRenderer: {fileID: 7736113540497291717}
   _arrivalTime: 2
   _rotateTime: 1
   _moveSpeed: 2.5
@@ -183,6 +184,12 @@ CapsuleCollider:
   m_Height: 3.69
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0.7824005}
+--- !u!23 &7736113540497291717 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -885880568012316268, guid: 73b25051678f9d040b180468bcc317db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1794836279227734097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7407845127559269967
 PrefabInstance:
   m_ObjectHideFlags: 0

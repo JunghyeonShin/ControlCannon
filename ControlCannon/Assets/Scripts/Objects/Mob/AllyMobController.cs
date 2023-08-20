@@ -15,7 +15,11 @@ public class AllyMobController : MobController
     {
         base.Awake();
 
+        var allyMaterial = Manager.Instance.Resource.Load<Material>(Define.RESOURCE_MATERIAL_ALLY);
+        _renderer.sharedMaterial = allyMaterial;
+
         gameObject.tag = Define.TAG_MOB;
+
         #region TEMP
         _passGate = new bool[TOTAL_GATE_COUNT];
         #endregion

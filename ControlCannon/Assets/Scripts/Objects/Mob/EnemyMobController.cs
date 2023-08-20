@@ -8,6 +8,9 @@ public class EnemyMobController : MobController
     {
         base.Awake();
 
+        var enemyMaterial = Manager.Instance.Resource.Load<Material>(Define.RESOURCE_MATERIAL_ENEMY);
+        _renderer.sharedMaterial = enemyMaterial;
+
         gameObject.tag = Define.TAG_ENEMY_MOB;
     }
 

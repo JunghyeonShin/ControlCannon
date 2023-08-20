@@ -18,6 +18,7 @@ public abstract class MobController : MonoBehaviour, IMobController
     protected Rigidbody _rigidbody;
     protected Collider _collider;
     protected IMobController _targetMob;
+    protected Renderer _renderer;
 
     private Coroutine _attackTargetMobCoroutine;
     private Coroutine _deadCoroutine;
@@ -26,6 +27,7 @@ public abstract class MobController : MonoBehaviour, IMobController
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<Collider>();
+        _renderer = GetComponentInChildren<Renderer>();
     }
 
     protected abstract void OnEnable();

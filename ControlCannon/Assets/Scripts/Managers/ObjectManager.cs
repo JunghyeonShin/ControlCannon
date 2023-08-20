@@ -30,11 +30,11 @@ public class ObjectManager
     public void Init()
     {
         var cannonParent = new GameObject(Define.ROOT_CANNON);
-        _cannon = Manager.Instance.Resource.Instantiate(Define.RESOURCE_CANNON, cannonParent);
+        _cannon = Manager.Instance.Resource.Instantiate(Define.RESOURCE_OBJECT_CANNON, cannonParent);
         _currentCannon = _cannon.GetComponent<CannonController>();
 
         var castleParent = new GameObject(Define.ROOT_CASTLE);
-        _castle = Manager.Instance.Resource.Instantiate(Define.RESOURCE_CASTLE, castleParent);
+        _castle = Manager.Instance.Resource.Instantiate(Define.RESOURCE_OBJECT_CASTLE, castleParent);
         _castle.SetActive(false);
 
         _objectsDic = new Dictionary<EObjectTypes, ObjectPool>();
@@ -42,10 +42,10 @@ public class ObjectManager
             _objectsDic.Add(ii, new ObjectPool());
 
         var objectsParent = new GameObject(Define.OBJECT_POOL);
-        var mob = Manager.Instance.Resource.Load<GameObject>(Define.RESOURCE_MOB);
+        var mob = Manager.Instance.Resource.Load<GameObject>(Define.RESOURCE_OBJECT_MOB);
         _objectsDic[EObjectTypes.Mob].InitPool(mob, objectsParent, CREATE_MOB_COUNT);
         _objectsDic[EObjectTypes.EnemyMob].InitPool(mob, objectsParent, CREATE_MOB_COUNT);
-        var gate = Manager.Instance.Resource.Load<GameObject>(Define.RESOURCE_GATE);
+        var gate = Manager.Instance.Resource.Load<GameObject>(Define.RESOURCE_OBJECT_GATE);
         _objectsDic[EObjectTypes.Gate].InitPool(gate, objectsParent, CREATE_GATE_COUNT);
 
         _usedObjectsQueue = new Queue<GameObject>();
