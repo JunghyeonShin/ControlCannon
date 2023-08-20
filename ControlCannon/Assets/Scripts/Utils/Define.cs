@@ -26,4 +26,5 @@ public class Define
     public const string RESOURCE_UI_STAGE_BUTTON = "UIs/UI_StageButton";
     public const string RESOURCE_UI_INGAME = "UIs/UI_Ingame";
     public const string RESOURCE_UI_CLEARSTAGE = "UIs/UI_ClearStage";
+    public const string RESOURCE_UI_DEFEATSTAGE = "UIs/UI_DefeatStage";
 }

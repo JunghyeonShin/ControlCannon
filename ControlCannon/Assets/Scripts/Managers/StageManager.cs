@@ -81,4 +81,15 @@ public class StageManager
             clearStageUI.SetStageIndex(_currentStageIndex);
         });
     }
+
+    public void DefeatStage()
+    {
+        Manager.Instance.Object.Castle.SetActive(false);
+        Manager.Instance.Object.ReturnUsedAllObject();
+        Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Ready;
+        Manager.Instance.UI.ShowUI<UI_DefeatStage>(Define.RESOURCE_UI_DEFEATSTAGE, (defeatStageUI) =>
+        {
+            defeatStageUI.SetStageIndex(_currentStageIndex);
+        });
+    }
 }
