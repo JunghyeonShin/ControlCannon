@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class ResourceManager
 {
-    private Dictionary<string, Object> _resources = new Dictionary<string, Object>();
+    private Dictionary<string, Object> _resourcesDic = new Dictionary<string, Object>();
 
     public T Load<T>(string key) where T : Object
     {
-        if (_resources.TryGetValue(key, out var obj))
+        if (_resourcesDic.TryGetValue(key, out var obj))
             return obj as T;
 
         obj = Resources.Load<T>(key);
+        if (null != obj)
+            _resourcesDic.Add(key, obj);
         return obj as T;
     }
 

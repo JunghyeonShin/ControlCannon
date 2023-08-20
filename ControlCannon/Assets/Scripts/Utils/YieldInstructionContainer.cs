@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class YieldInstructionContainer
 {
-    private static Dictionary<float, WaitForSeconds> _waitForSecondsContainer = new Dictionary<float, WaitForSeconds>();
+    private static Dictionary<float, WaitForSeconds> _waitForSecondsDic = new Dictionary<float, WaitForSeconds>();
 
     public static WaitForSeconds GetWaitForSeconds(float time)
     {
-        if (_waitForSecondsContainer.TryGetValue(time, out WaitForSeconds result))
+        if (_waitForSecondsDic.TryGetValue(time, out WaitForSeconds result))
             return result;
 
         result = new WaitForSeconds(time);
-        _waitForSecondsContainer.Add(time, result);
+        _waitForSecondsDic.Add(time, result);
         return result;
     }
 }
