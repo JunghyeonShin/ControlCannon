@@ -13,6 +13,7 @@ public enum ECannonStates
 public interface ICannonController
 {
     public ECannonStates CannonState { get; set; }
+    public void InitPosition();
 }
 
 public class CannonController : MonoBehaviour, ICannonController
@@ -62,6 +63,11 @@ public class CannonController : MonoBehaviour, ICannonController
             _readyToPlayModeCoroutine = null;
         }
         _readyToPlayModeCoroutine = StartCoroutine(_ReadyToPlayMode());
+    }
+
+    public void InitPosition()
+    {
+        transform.localPosition = Vector3.zero;
     }
 
     private IEnumerator _ReadyToPlayMode()

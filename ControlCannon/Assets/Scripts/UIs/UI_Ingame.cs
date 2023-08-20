@@ -22,5 +22,6 @@ public class UI_Ingame : UI_Base
         Manager.Instance.Object.Castle.SetActive(false);
         Manager.Instance.Object.ReturnUsedAllObject();
         Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Ready;
+        Manager.Instance.Object.CurrentCannon.InitPosition();
     }
 }

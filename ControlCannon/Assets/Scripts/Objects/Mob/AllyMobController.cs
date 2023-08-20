@@ -34,8 +34,10 @@ public class AllyMobController : MobController
 
     protected override void _MoveMob()
     {
-        var moveVec = new Vector3(0f, 0f, _moveSpeed * transform.forward.z * Time.fixedDeltaTime);
-        _rigidbody.velocity = moveVec;
+        _rigidbody.velocity = Vector3.zero;
+        var targetTransform = Manager.Instance.Object.Castle.transform;
+        transform.forward = (targetTransform.localPosition - transform.position).normalized;
+        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetTransform.localPosition, _moveSpeed * Time.fixedDeltaTime);
     }
 
     protected override void _AttackTarget(Collision collision)
@@ -74,6 +76,7 @@ public class AllyMobController : MobController
     private void _AttackTargetCastle()
     {
         _targetCastle.OnDamage();
+        _targetCastle = null;
         gameObject.SetActive(false);
     }
 }

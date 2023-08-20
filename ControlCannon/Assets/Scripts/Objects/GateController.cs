@@ -11,6 +11,10 @@ public class GateController : MonoBehaviour
     public int LoadIndex { get; set; }
 
     private const string MULTIPLIER_OBJECT_NAME = "Multiplier";
+    private const float MIN_RANDOM_POSITION_X = -1f;
+    private const float MAX_RANDOM_POSITION_X = 1f;
+    private const float MIN_RANDOM_POSITION_Z = 0f;
+    private const float MAX_RANDOM_POSITION_Z = 1f;
     private const int SELF = 1;
 
     private void Awake()
@@ -41,7 +45,8 @@ public class GateController : MonoBehaviour
             for (int ii = 0; ii < _multiplier - SELF; ++ii)
             {
                 var replicaAllyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
-                replicaAllyMob.transform.localPosition = other.transform.localPosition + other.transform.forward;
+                var randomPosition = new Vector3(Random.Range(MIN_RANDOM_POSITION_X, MAX_RANDOM_POSITION_X), 0f, Random.Range(MIN_RANDOM_POSITION_Z, MAX_RANDOM_POSITION_Z));
+                replicaAllyMob.transform.localPosition = other.transform.localPosition + randomPosition;
                 var replicaAllyMobController = Utils.GetOrAddComponent<AllyMobController>(replicaAllyMob);
                 replicaAllyMob.SetActive(true);
                 replicaAllyMobController.PassGate(LoadIndex);

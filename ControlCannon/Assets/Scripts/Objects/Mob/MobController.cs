@@ -13,7 +13,7 @@ public abstract class MobController : MonoBehaviour, IMobController
     [SerializeField] protected float _attackDelayTime = 1f;
     [SerializeField] protected float _attack = 10f;
     [SerializeField] protected float _health = 10f;
-    [SerializeField] protected float _moveSpeed = 150f;
+    [SerializeField] protected float _moveSpeed = 1f;
 
     protected Rigidbody _rigidbody;
     protected Collider _collider;
