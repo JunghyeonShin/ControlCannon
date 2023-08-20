@@ -10,6 +10,7 @@ public class StageManager
 
     private int _currentStageIndex = -1;
 
+    public int LastStageIndex { get { return _stagesList.Count; } }
     public Stage CurrentStageInfo
     {
         get
@@ -59,6 +60,8 @@ public class StageManager
         #region TEMP
         _currentStageIndex = 0;
         #endregion
+        Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Shoot;
+        Manager.Instance.Object.CurrentCannon.InitPosition();
         Manager.Instance.Object.Castle.SetActive(true);
         for (int ii = 0; ii < _stagesList[_currentStageIndex].gates.Length; ++ii)
         {
@@ -67,5 +70,15 @@ public class StageManager
             gateController.LoadIndex = ii;
             gate.SetActive(true);
         }
+    }
+
+    public void ClearStage()
+    {
+        Manager.Instance.Object.ReturnUsedAllObject();
+        Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Ready;
+        Manager.Instance.UI.ShowUI<UI_ClearStage>(Define.RESOURCE_UI_CLEARSTAGE, (clearStageUI) =>
+        {
+            clearStageUI.SetStageIndex(_currentStageIndex);
+        });
     }
 }

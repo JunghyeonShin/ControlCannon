@@ -36,6 +36,5 @@ public class UI_StageButton : UI_Base
     {
         Manager.Instance.UI.ShowUI<UI_Ingame>(Define.RESOURCE_UI_INGAME);
         Manager.Instance.Stage.LoadStage(_stageIndex);
-        Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Shoot;
     }
 }

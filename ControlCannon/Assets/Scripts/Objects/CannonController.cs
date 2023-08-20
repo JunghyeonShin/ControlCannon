@@ -131,6 +131,12 @@ public class CannonController : MonoBehaviour, ICannonController
     {
         while (_createMob)
         {
+            if (ECannonStates.Ready == CannonState)
+            {
+                _createMob = false;
+                break;
+            }
+
             var allyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
             allyMob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
             var allyMobController = Utils.GetOrAddComponent<AllyMobController>(allyMob);

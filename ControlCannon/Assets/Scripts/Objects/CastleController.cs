@@ -20,6 +20,8 @@ public class CastleController : MonoBehaviour, ICastleController
     private const float MAX_RANDOM_POSITION_X = 1f;
     private const float MIN_RANDOM_POSITION_Z = -1f;
     private const float MAX_RANDOM_POSITION_Z = 0f;
+    private const float ADJUST_RANDOM_POSITION = 2f;
+    private const float EMPTY_HEALTH = 0f;
     private const int DAMAGED_VALUE = 1;
 
     private readonly Vector3 DEFAULT_CASTLE_SCALE = new Vector3(0.3f, 0.3f, 0.3f);
@@ -46,8 +48,11 @@ public class CastleController : MonoBehaviour, ICastleController
     public void OnDamage()
     {
         _health -= DAMAGED_VALUE;
-        if (_health <= 0f)
+        if (_health <= EMPTY_HEALTH)
+        {
             gameObject.SetActive(false);
+            Manager.Instance.Stage.ClearStage();
+        }
     }
 
     private IEnumerator _CreateMob()
@@ -60,7 +65,7 @@ public class CastleController : MonoBehaviour, ICastleController
             {
                 var enemyMob = Manager.Instance.Object.GetObject(EObjectTypes.EnemyMob);
                 var randomPosition = new Vector3(Random.Range(MIN_RANDOM_POSITION_X, MAX_RANDOM_POSITION_X), 0f, Random.Range(MIN_RANDOM_POSITION_Z, MAX_RANDOM_POSITION_Z));
-                enemyMob.transform.localPosition = transform.localPosition + transform.forward * 2f + randomPosition;
+                enemyMob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_RANDOM_POSITION + randomPosition;
                 enemyMob.transform.localRotation = transform.localRotation;
                 Utils.GetOrAddComponent<EnemyMobController>(enemyMob);
                 enemyMob.SetActive(true);
