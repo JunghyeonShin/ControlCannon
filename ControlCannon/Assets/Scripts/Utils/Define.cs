@@ -9,6 +9,7 @@ public class Define
     public const string ROOT_UI = "[ROOT_UI]";
     public const string ROOT_CANNON = "[ROOT_CANNON]";
     public const string ROOT_CASTLE = "[ROOT_CASTLE]";
+    public const string ROOT_OBSTACLE = "[ROOT_OBSTACLE]";
     public const string OBJECT_POOL = "[OBJECT_POOL]";
 
     //Tag
@@ -25,6 +26,7 @@ public class Define
     public const string RESOURCE_OBJECT_CASTLE = "Objects/Castle";
     public const string RESOURCE_OBJECT_MOB = "Objects/Mob";
     public const string RESOURCE_OBJECT_GATE = "Objects/Gate";
+    public const string RESOURCE_OBJECT_OBSTACLE = "Objects/ObStacles/";
     public const string RESOURCE_UI_TITLE = "UIs/UI_Title";
     public const string RESOURCE_UI_SELECT_STAGE = "UIs/UI_SelectStage";
     public const string RESOURCE_UI_STAGE_BUTTON = "UIs/UI_StageButton";

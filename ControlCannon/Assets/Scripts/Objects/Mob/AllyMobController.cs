@@ -49,7 +49,7 @@ public class AllyMobController : MobController, IAllyMobController
     protected override void OnDisable()
     {
         AllyMoveTypes = EAllyMobMoves.None;
-        Manager.Instance.Object.ReturnObject(EObjectTypes.Mob, gameObject);
+        Manager.Instance.Object.ReturnObject(EObjectTypes.AllyMob, gameObject);
     }
 
     protected override void _MoveMob()

@@ -32,8 +32,8 @@ public class GateController : MonoBehaviour
         if (null == currentStageInfo)
             return;
 
-        transform.localPosition = currentStageInfo.gates[LoadIndex].gatePosition;
-        _multiplier = currentStageInfo.gates[LoadIndex].multiplier;
+        transform.localPosition = currentStageInfo.Gates[LoadIndex].GatePosition;
+        _multiplier = currentStageInfo.Gates[LoadIndex].Multiplier;
         _multiplierText.text = $"X{_multiplier}";
     }
 
@@ -48,7 +48,7 @@ public class GateController : MonoBehaviour
             allyMobController.PassGate(LoadIndex);
             for (int ii = 0; ii < _multiplier - SELF; ++ii)
             {
-                var replicaAllyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
+                var replicaAllyMob = Manager.Instance.Object.GetObject(EObjectTypes.AllyMob);
                 var randomPosition = new Vector3(Random.Range(MIN_RANDOM_POSITION_X, MAX_RANDOM_POSITION_X), 0f, Random.Range(MIN_RANDOM_POSITION_Z, MAX_RANDOM_POSITION_Z));
                 replicaAllyMob.transform.localPosition = other.transform.localPosition + randomPosition;
                 var replicaAllyMobController = Utils.GetOrAddComponent<AllyMobController>(replicaAllyMob);

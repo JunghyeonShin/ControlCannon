@@ -6,14 +6,23 @@ using UnityEngine;
 [Serializable]
 public class Stage
 {
-    public Vector3 castlePosition;
-    public Vector3 castleRotation;
-    public Gate[] gates;
+    public Vector3 CastlePosition;
+    public Vector3 CastleRotation;
+    public Gate[] Gates;
+    public Obstacle[] Obstacles;
 
     [Serializable]
     public class Gate
     {
-        public int multiplier;
-        public Vector3 gatePosition;
+        public int Multiplier;
+        public Vector3 GatePosition;
+    }
+
+    [Serializable]
+    public class Obstacle
+    {
+        public string ObstacleName;
+        public Vector3 ObstaclePosition;
+        public Vector3 ObstacleRotation;
     }
 }

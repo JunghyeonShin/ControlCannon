@@ -40,8 +40,8 @@ public class CastleController : MonoBehaviour, ICastleController
         if (null == currentStageInfo)
             return;
 
-        transform.localPosition = Manager.Instance.Stage.CurrentStageInfo.castlePosition;
-        transform.localEulerAngles = Manager.Instance.Stage.CurrentStageInfo.castleRotation;
+        transform.localPosition = Manager.Instance.Stage.CurrentStageInfo.CastlePosition;
+        transform.localEulerAngles = Manager.Instance.Stage.CurrentStageInfo.CastleRotation;
         transform.localScale = DEFAULT_CASTLE_SCALE;
 
         _StopCreateMobCoroutine();

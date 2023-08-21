@@ -1,28 +1,29 @@
 {
-    "castlePosition": {
+    "CastlePosition": {
         "x": 0.0,
         "y": 0.0,
         "z": 45.0
     },
-	"castleRotation": {
+	"CastleRotation": {
         "x": 0.0,
         "y": 180.0,
         "z": 0.0
 	},
-    "gates": [{
-            "multiplier": 2,
-            "gatePosition": {
+    "Gates": [{
+            "Multiplier": 2,
+            "GatePosition": {
                 "x": -3.0,
                 "y": 0.0,
                 "z": 10.0
             }
         }, {
-            "multiplier": 6,
-            "gatePosition": {
+            "Multiplier": 6,
+            "GatePosition": {
                 "x": 3.0,
                 "y": 0.0,
                 "z": 10.0
             }
         }
-    ]
+    ],
+    "Obstacles": []
 }

@@ -142,7 +142,7 @@ public class CannonController : MonoBehaviour, ICannonController
                 break;
             }
 
-            var allyMob = Manager.Instance.Object.GetObject(EObjectTypes.Mob);
+            var allyMob = Manager.Instance.Object.GetObject(EObjectTypes.AllyMob);
             allyMob.transform.localPosition = transform.localPosition + transform.forward * ADJUST_MOB_SPAWN_POINT;
             var allyMobController = Utils.GetOrAddComponent<AllyMobController>(allyMob);
             allyMob.SetActive(true);

@@ -33,9 +33,10 @@ public class StageManager
 
         var fileIndex = 0;
         var resource = Manager.Instance.Resource;
+        var filePath = new StringBuilder();
         while (true)
         {
-            var filePath = new StringBuilder();
+            filePath.Clear();
             if (fileIndex < DIGIT_VALUE)
                 filePath.Append(RESOURCE_STAGES + DIGIT_STAGE + fileIndex);
             else
@@ -52,19 +53,25 @@ public class StageManager
 
     public void LoadStage(int stageIndex)
     {
-        //_currentStageIndex = stageIndex;
-        #region TEMP
-        _currentStageIndex = 0;
-        #endregion
+        _currentStageIndex = stageIndex;
         Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Shoot;
         Manager.Instance.Object.CurrentCannon.InitPosition();
         Manager.Instance.Object.Castle.SetActive(true);
-        for (int ii = 0; ii < _stagesList[_currentStageIndex].gates.Length; ++ii)
+
+        for (int ii = 0; ii < _stagesList[_currentStageIndex].Gates.Length; ++ii)
         {
             var gate = Manager.Instance.Object.GetObject(EObjectTypes.Gate);
             var gateController = Utils.GetOrAddComponent<GateController>(gate);
             gateController.LoadIndex = ii;
             gate.SetActive(true);
+        }
+
+        for (int ii = 0; ii < _stagesList[_currentStageIndex].Obstacles.Length; ++ii)
+        {
+            var obstacle = Manager.Instance.Object.GetObstacleObject(_stagesList[_currentStageIndex].Obstacles[ii].ObstacleName);
+            var obstacleController = Utils.GetOrAddComponent<ObstacleController>(obstacle);
+            obstacleController.LoadIndex = ii;
+            obstacle.SetActive(true);
         }
     }
 
