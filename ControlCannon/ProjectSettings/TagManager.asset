@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Mob
+  - AllyMob
   - EnemyMob
   - EnemyCastle
   layers:

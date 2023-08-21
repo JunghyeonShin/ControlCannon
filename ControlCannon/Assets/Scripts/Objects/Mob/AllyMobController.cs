@@ -2,7 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllyMobController : MobController
+public enum EAllyMobMoves
+{
+    None,
+    Forward,
+    Tracking,
+}
+
+public interface IAllyMobController
+{
+    public EAllyMobMoves AllyMoveTypes { get; set; }
+}
+
+public class AllyMobController : MobController, IAllyMobController
 {
     private bool[] _passGate;
     private ICastleController _targetCastle;
@@ -11,6 +23,8 @@ public class AllyMobController : MobController
     private const int TOTAL_GATE_COUNT = 10;
     #endregion
 
+    public EAllyMobMoves AllyMoveTypes { get; set; }
+
     protected override void Awake()
     {
         base.Awake();
@@ -18,7 +32,7 @@ public class AllyMobController : MobController
         var allyMaterial = Manager.Instance.Resource.Load<Material>(Define.RESOURCE_MATERIAL_ALLY);
         _renderer.sharedMaterial = allyMaterial;
 
-        gameObject.tag = Define.TAG_MOB;
+        gameObject.tag = Define.TAG_ALLY_MOB;
 
         #region TEMP
         _passGate = new bool[TOTAL_GATE_COUNT];
@@ -29,19 +43,26 @@ public class AllyMobController : MobController
     {
         _health = 10f;
         _collider.isTrigger = false;
+        AllyMoveTypes = EAllyMobMoves.Forward;
     }
 
     protected override void OnDisable()
     {
+        AllyMoveTypes = EAllyMobMoves.None;
         Manager.Instance.Object.ReturnObject(EObjectTypes.Mob, gameObject);
     }
 
     protected override void _MoveMob()
     {
         _rigidbody.velocity = Vector3.zero;
-        var targetTransform = Manager.Instance.Object.Castle.transform;
-        transform.forward = (targetTransform.localPosition - transform.position).normalized;
-        transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetTransform.localPosition, _moveSpeed * Time.fixedDeltaTime);
+        if (EAllyMobMoves.Forward == AllyMoveTypes)
+            transform.localPosition += new Vector3(0f, 0f, _moveSpeed * transform.forward.z * Time.fixedDeltaTime);
+        else if (EAllyMobMoves.Tracking == AllyMoveTypes)
+        {
+            var targetTransform = Manager.Instance.Object.Castle.transform;
+            transform.forward = (targetTransform.localPosition - transform.position).normalized;
+            transform.localPosition = Vector3.MoveTowards(transform.localPosition, targetTransform.localPosition, _moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     protected override void _AttackTarget(Collision collision)

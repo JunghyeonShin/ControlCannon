@@ -39,7 +39,7 @@ public class GateController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(Define.TAG_MOB))
+        if (other.CompareTag(Define.TAG_ALLY_MOB))
         {
             var allyMobController = other.gameObject.GetComponent<AllyMobController>();
             if (allyMobController.IsPassedGate(LoadIndex))

@@ -36,7 +36,7 @@ public class EnemyMobController : MobController
         if (null != _targetMob)
             return;
 
-        if (collision.gameObject.CompareTag(Define.TAG_MOB))
+        if (collision.gameObject.CompareTag(Define.TAG_ALLY_MOB))
         {
             _targetMob = collision.gameObject.GetComponent<IMobController>();
             _AttackTargetMob();

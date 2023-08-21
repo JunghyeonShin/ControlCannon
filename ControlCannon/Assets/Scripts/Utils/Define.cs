@@ -12,7 +12,7 @@ public class Define
     public const string OBJECT_POOL = "[OBJECT_POOL]";
 
     //Tag
-    public const string TAG_MOB = "Mob";
+    public const string TAG_ALLY_MOB = "AllyMob";
     public const string TAG_ENEMY_MOB = "EnemyMob";
     public const string TAG_ENEMY_CASTLE = "EnemyCastle";
 
