@@ -4,24 +4,36 @@
         "y": 0.0,
         "z": 45.0
     },
-	"CastleRotation": {
+    "CastleRotation": {
         "x": 0.0,
         "y": 180.0,
         "z": 0.0
-	},
+    },
     "Gates": [{
             "Multiplier": 2,
+            "GateType": "NonMovable",
             "GatePosition": {
                 "x": -3.0,
                 "y": 0.0,
                 "z": 10.0
+            },
+            "GateScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }, {
             "Multiplier": 6,
+            "GateType": "NonMovable",
             "GatePosition": {
                 "x": 3.0,
                 "y": 0.0,
                 "z": 10.0
+            },
+            "GateScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }
     ],

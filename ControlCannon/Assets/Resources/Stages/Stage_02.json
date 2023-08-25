@@ -1,0 +1,76 @@
+{
+    "CastlePosition": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 45.0
+    },
+    "CastleRotation": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+    },
+    "Gates": [{
+            "Multiplier": 4,
+            "GateType": "NonMovable",
+            "GatePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 12.18
+            },
+            "GateScale": {
+                "x": 1.3,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }, {
+            "Multiplier": 2,
+            "GateType": "NonMovable",
+            "GatePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 20.16
+            },
+            "GateScale": {
+                "x": 1.3,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }
+    ],
+    "Obstacles": [{
+            "ObstacleName": "Obstacle_03",
+            "ObstaclePosition": {
+                "x": -6.13,
+                "y": 0.0,
+                "z": 22.09
+            },
+            "ObstacleRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 2.54,
+                "y": 1.0,
+                "z": 2.92
+            }
+        }, {
+            "ObstacleName": "Obstacle_03",
+            "ObstaclePosition": {
+                "x": 6.13,
+                "y": 0.0,
+                "z": 22.09
+            },
+            "ObstacleRotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 2.54,
+                "y": 1.0,
+                "z": 2.92
+            }
+        }
+    ]
+}

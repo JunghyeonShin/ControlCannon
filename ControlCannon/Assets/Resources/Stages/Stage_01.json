@@ -11,31 +11,55 @@
     },
     "Gates": [{
             "Multiplier": 2,
+            "GateType": "NonMovable",
             "GatePosition": {
                 "x": -4.170000076293945,
                 "y": 0.0,
                 "z": 6.75
+            },
+            "GateScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }, {
             "Multiplier": 3,
+            "GateType": "NonMovable",
             "GatePosition": {
                 "x": 4.170000076293945,
                 "y": 0.0,
                 "z": 6.75
+            },
+            "GateScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }, {
             "Multiplier": 4,
+            "GateType": "NonMovable",
             "GatePosition": {
                 "x": -5.690000057220459,
                 "y": 0.0,
                 "z": 17.700000762939454
+            },
+            "GateScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }, {
             "Multiplier": 3,
+            "GateType": "NonMovable",
             "GatePosition": {
                 "x": 5.690000057220459,
                 "y": 0.0,
                 "z": 17.700000762939454
+            },
+            "GateScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }
     ],
@@ -50,6 +74,11 @@
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }, {
             "ObstacleName": "Obstacle_01",
@@ -62,6 +91,11 @@
                 "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }, {
             "ObstacleName": "Obstacle_02",
@@ -74,6 +108,11 @@
                 "x": 0.0,
                 "y": 180.0,
                 "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             }
         }
     ]

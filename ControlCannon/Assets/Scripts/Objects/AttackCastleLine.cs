@@ -9,7 +9,7 @@ public class AttackCastleLine : MonoBehaviour
         if (other.CompareTag(Define.TAG_ALLY_MOB))
         {
             var allyMobController = other.GetComponent<IAllyMobController>();
-            allyMobController.AllyMoveTypes = EAllyMobMoves.Tracking;
+            allyMobController.MoveTypes = EAllyMobMoves.Tracking;
         }
     }
 }

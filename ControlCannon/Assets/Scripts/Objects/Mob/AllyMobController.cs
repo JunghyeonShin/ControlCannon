@@ -11,7 +11,7 @@ public enum EAllyMobMoves
 
 public interface IAllyMobController
 {
-    public EAllyMobMoves AllyMoveTypes { get; set; }
+    public EAllyMobMoves MoveTypes { get; set; }
 }
 
 public class AllyMobController : MobController, IAllyMobController
@@ -23,7 +23,7 @@ public class AllyMobController : MobController, IAllyMobController
     private const int TOTAL_GATE_COUNT = 10;
     #endregion
 
-    public EAllyMobMoves AllyMoveTypes { get; set; }
+    public EAllyMobMoves MoveTypes { get; set; }
 
     protected override void Awake()
     {
@@ -43,21 +43,21 @@ public class AllyMobController : MobController, IAllyMobController
     {
         _health = 10f;
         _collider.isTrigger = false;
-        AllyMoveTypes = EAllyMobMoves.Forward;
+        MoveTypes = EAllyMobMoves.Forward;
     }
 
     protected override void OnDisable()
     {
-        AllyMoveTypes = EAllyMobMoves.None;
+        MoveTypes = EAllyMobMoves.None;
         Manager.Instance.Object.ReturnObject(EObjectTypes.AllyMob, gameObject);
     }
 
     protected override void _MoveMob()
     {
         _rigidbody.velocity = Vector3.zero;
-        if (EAllyMobMoves.Forward == AllyMoveTypes)
+        if (EAllyMobMoves.Forward == MoveTypes)
             transform.localPosition += new Vector3(0f, 0f, _moveSpeed * transform.forward.z * Time.fixedDeltaTime);
-        else if (EAllyMobMoves.Tracking == AllyMoveTypes)
+        else if (EAllyMobMoves.Tracking == MoveTypes)
         {
             var targetTransform = Manager.Instance.Object.Castle.transform;
             transform.forward = (targetTransform.localPosition - transform.position).normalized;

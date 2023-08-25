@@ -15,7 +15,9 @@ public class Stage
     public class Gate
     {
         public int Multiplier;
+        public string GateType;
         public Vector3 GatePosition;
+        public Vector3 GateScale;
     }
 
     [Serializable]
@@ -24,5 +26,6 @@ public class Stage
         public string ObstacleName;
         public Vector3 ObstaclePosition;
         public Vector3 ObstacleRotation;
+        public Vector3 ObstacleScale;
     }
 }

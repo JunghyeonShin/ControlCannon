@@ -8,8 +8,13 @@ public class ObstacleController : MonoBehaviour
 
     private void OnEnable()
     {
-        transform.localPosition = Manager.Instance.Stage.CurrentStageInfo.Obstacles[LoadIndex].ObstaclePosition;
-        transform.localEulerAngles = Manager.Instance.Stage.CurrentStageInfo.Obstacles[LoadIndex].ObstacleRotation;
+        var currentStageInfo = Manager.Instance.Stage.CurrentStageInfo;
+        if (null == currentStageInfo)
+            return;
+
+        transform.localPosition = currentStageInfo.Obstacles[LoadIndex].ObstaclePosition;
+        transform.localEulerAngles = currentStageInfo.Obstacles[LoadIndex].ObstacleRotation;
+        transform.localScale = currentStageInfo.Obstacles[LoadIndex].ObstacleScale;
     }
 
     private void OnDisable()

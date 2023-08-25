@@ -32,6 +32,11 @@ public abstract class MobController : MonoBehaviour, IMobController
 
     protected abstract void OnEnable();
 
+    private void FixedUpdate()
+    {
+        _MoveMob();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         _AttackTarget(collision);
@@ -40,11 +45,6 @@ public abstract class MobController : MonoBehaviour, IMobController
     private void OnCollisionExit(Collision collision)
     {
         _targetMob = null;
-    }
-
-    private void FixedUpdate()
-    {
-        _MoveMob();
     }
 
     protected abstract void OnDisable();
