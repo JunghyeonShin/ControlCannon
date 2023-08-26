@@ -51,6 +51,6 @@ public class UI_ClearStage : UI_Base
     private void _OnClickNextButton()
     {
         Manager.Instance.UI.ShowUI<UI_Ingame>(Define.RESOURCE_UI_INGAME);
-        //Manager.Instance.Stage.LoadStage(_currentStageIndex + NEXT_STAGE);
+        Manager.Instance.Stage.LoadStage(_currentStageIndex + NEXT_STAGE);
     }
 }
