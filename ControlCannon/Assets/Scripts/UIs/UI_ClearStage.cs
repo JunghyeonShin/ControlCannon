@@ -19,6 +19,9 @@ public class UI_ClearStage : UI_Base
     private int _currentStageIndex = -1;
 
     private const int NEXT_STAGE = 1;
+    #region TEMP
+    private const int MAX_STAGE = 20;
+    #endregion
 
     protected override void _Init()
     {
@@ -51,6 +54,9 @@ public class UI_ClearStage : UI_Base
     private void _OnClickNextButton()
     {
         Manager.Instance.UI.ShowUI<UI_Ingame>(Define.RESOURCE_UI_INGAME);
-        Manager.Instance.Stage.LoadStage(_currentStageIndex + NEXT_STAGE);
+        if (MAX_STAGE == _currentStageIndex)
+            Manager.Instance.Stage.LoadStage(_currentStageIndex);
+        else
+            Manager.Instance.Stage.LoadStage(_currentStageIndex + NEXT_STAGE);
     }
 }
