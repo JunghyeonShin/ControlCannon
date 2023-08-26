@@ -1,0 +1,136 @@
+{
+    "CastlePosition": {
+        "x": 3.39,
+        "y": 0.0,
+        "z": 45.0
+    },
+    "CastleRotation": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+    },
+    "Gates": [{
+            "Multiplier": 3,
+            "GateType": "Movable",
+            "GatePosition": {
+                "x": 3.5399999618530275,
+                "y": 0.0,
+                "z": 8.399999618530274
+            },
+            "GateScale": {
+                "x": 1.399999976158142,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }, {
+            "Multiplier": 3,
+            "GateType": "NonMovable",
+            "GatePosition": {
+                "x": 3.5399999618530275,
+                "y": 0.0,
+                "z": 21.200000762939454
+            },
+            "GateScale": {
+                "x": 1.399999976158142,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }, {
+            "Multiplier": 10,
+            "GateType": "NonMovable",
+            "GatePosition": {
+                "x": -4.289999961853027,
+                "y": 0.0,
+                "z": 27.049999237060548
+            },
+            "GateScale": {
+                "x": 1.399999976158142,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }, {
+            "Multiplier": 3,
+            "GateType": "NonMovable",
+            "GatePosition": {
+                "x": 3.5399999618530275,
+                "y": 0.0,
+                "z": 32.599998474121097
+            },
+            "GateScale": {
+                "x": 1.399999976158142,
+                "y": 1.0,
+                "z": 1.0
+            }
+        }
+    ],
+    "Obstacles": [{
+            "ObstacleName": "Obstacle_16",
+            "ObstaclePosition": {
+                "x": 3.7300000190734865,
+                "y": 0.0,
+                "z": 15.199999809265137
+            },
+            "ObstacleRotation": {
+                "x": 0.0,
+                "y": 30.00000762939453,
+                "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 0.46000000834465029,
+                "y": 1.0,
+                "z": 0.6399999856948853
+            }
+        }, {
+            "ObstacleName": "Obstacle_16",
+            "ObstaclePosition": {
+                "x": -4.5,
+                "y": 0.0,
+                "z": 20.770000457763673
+            },
+            "ObstacleRotation": {
+                "x": 0.0,
+                "y": 130.59999084472657,
+                "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 0.46000000834465029,
+                "y": 1.0,
+                "z": 0.6399999856948853
+            }
+        }, {
+            "ObstacleName": "Obstacle_16",
+            "ObstaclePosition": {
+                "x": 3.7300000190734865,
+                "y": 0.0,
+                "z": 27.899999618530275
+            },
+            "ObstacleRotation": {
+                "x": 0.0,
+                "y": 130.59999084472657,
+                "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 0.46000000834465029,
+                "y": 1.0,
+                "z": 0.6399999856948853
+            }
+        }, {
+            "ObstacleName": "Obstacle_16",
+            "ObstaclePosition": {
+                "x": -4.5,
+                "y": 0.0,
+                "z": 35.20000076293945
+            },
+            "ObstacleRotation": {
+                "x": 0.0,
+                "y": 61.399993896484378,
+                "z": 0.0
+            },
+            "ObstacleScale": {
+                "x": 0.46000000834465029,
+                "y": 1.0,
+                "z": 0.6399999856948853
+            }
+        }
+    ]
+}
