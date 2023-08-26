@@ -21,8 +21,6 @@ public class CannonController : MonoBehaviour, ICannonController
     [SerializeField] private Transform _cannonLowerBody;
     [SerializeField] private float _arrivalTime = 2f;
     [SerializeField] private float _rotateTime = 1f;
-
-    [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private float _createDelayTime = 2f;
 
     private DragHandler _dragHandler;
@@ -116,8 +114,7 @@ public class CannonController : MonoBehaviour, ICannonController
         if (ECannonStates.Shoot != CannonState)
             return;
 
-        var x = eventData.delta.x * _moveSpeed * Time.deltaTime;
-        x = Mathf.Clamp(transform.localPosition.x + x, -MAX_HORIZONTAL_MOVE_VALUE, MAX_HORIZONTAL_MOVE_VALUE);
+        var x = Mathf.Clamp(eventData.pointerCurrentRaycast.worldPosition.x, -MAX_HORIZONTAL_MOVE_VALUE, MAX_HORIZONTAL_MOVE_VALUE);
         transform.localPosition = new Vector3(x, transform.localPosition.y, transform.localPosition.z);
     }
 
