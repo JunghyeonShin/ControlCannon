@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class StageManager
 {
-    private List<Stage> _stagesList;
+    private List<StageData> _stagesList;
 
     private int _currentStageIndex = -1;
 
     public int LastStageIndex { get { return _stagesList.Count; } }
-    public Stage CurrentStageInfo
+    public StageData CurrentStageInfo
     {
         get
         {
@@ -29,7 +29,7 @@ public class StageManager
 
     public void Init()
     {
-        _stagesList = new List<Stage>();
+        _stagesList = new List<StageData>();
 
         var fileIndex = 0;
         var resource = Manager.Instance.Resource;
@@ -45,7 +45,7 @@ public class StageManager
             if (null == stageFile)
                 break;
 
-            var stage = JsonUtility.FromJson<Stage>(stageFile.ToString());
+            var stage = JsonUtility.FromJson<StageData>(stageFile.ToString());
             _stagesList.Add(stage);
             ++fileIndex;
         }
@@ -79,6 +79,8 @@ public class StageManager
     {
         Manager.Instance.Object.ReturnUsedAllObject();
         Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Ready;
+        if (_currentStageIndex > Manager.Instance.Data.ClearStageIndex)
+            Manager.Instance.Data.ClearStageIndex = _currentStageIndex;
         Manager.Instance.UI.ShowUI<UI_ClearStage>(Define.RESOURCE_UI_CLEARSTAGE, (clearStageUI) =>
         {
             clearStageUI.SetStageIndex(_currentStageIndex);

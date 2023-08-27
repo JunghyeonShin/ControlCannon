@@ -18,7 +18,10 @@ public class UI_Ingame : UI_Base
 
     private void _OnClickBackButton()
     {
-        Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE);
+        Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE, (selectStage) =>
+        {
+            selectStage.OpenClearStage();
+        });
         Manager.Instance.Object.Castle.SetActive(false);
         Manager.Instance.Object.ReturnUsedAllObject();
         Manager.Instance.Object.CurrentCannon.CannonState = ECannonStates.Ready;

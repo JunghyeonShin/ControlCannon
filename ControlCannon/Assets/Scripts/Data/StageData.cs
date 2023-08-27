@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class Stage
+public class StageData
 {
     public Vector3 CastlePosition;
     public Vector3 CastleRotation;

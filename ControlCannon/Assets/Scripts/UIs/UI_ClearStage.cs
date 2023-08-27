@@ -41,7 +41,10 @@ public class UI_ClearStage : UI_Base
 
     private void _OnClickBackButton()
     {
-        Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE);
+        Manager.Instance.UI.ShowUI<UI_SelectStage>(Define.RESOURCE_UI_SELECT_STAGE, (selectStage) =>
+        {
+            selectStage.OpenClearStage();
+        });
         Manager.Instance.Object.CurrentCannon.InitPosition();
     }
 

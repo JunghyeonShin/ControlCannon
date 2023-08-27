@@ -9,6 +9,11 @@ public class UI_StageButton : UI_Base
         StageButton
     }
 
+    private enum EGameObjects
+    {
+        LockPanel
+    }
+
     private enum ETexts
     {
         StageText
@@ -21,6 +26,7 @@ public class UI_StageButton : UI_Base
     protected override void _Init()
     {
         _BindButton(typeof(EButtons));
+        _BindGameObject(typeof(EGameObjects));
         _BindText(typeof(ETexts));
 
         _BindEvent(_GetButton((int)EButtons.StageButton).gameObject, _OnClickStageButton);
@@ -30,6 +36,21 @@ public class UI_StageButton : UI_Base
     {
         _stageIndex = stageIndex + ADJUST_INDEX;
         _GetText((int)ETexts.StageText).text = $"{_stageIndex}";
+    }
+
+    public void OpenClearStage()
+    {
+        var stageTextObject = _GetText((int)ETexts.StageText).gameObject;
+        if (_stageIndex <= Manager.Instance.Data.ClearStageIndex + ADJUST_INDEX)
+        {
+            stageTextObject.SetActive(true);
+            _GetGameObject((int)EGameObjects.LockPanel).SetActive(false);
+        }
+        else
+        {
+            stageTextObject.SetActive(false);
+            _GetGameObject((int)EGameObjects.LockPanel).SetActive(true);
+        }
     }
 
     private void _OnClickStageButton()

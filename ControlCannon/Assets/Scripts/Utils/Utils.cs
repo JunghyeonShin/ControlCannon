@@ -17,7 +17,7 @@ public class Utils : MonoBehaviour
         if (null == go)
             return null;
 
-        foreach (T component in go.GetComponentsInChildren<T>())
+        foreach (T component in go.GetComponentsInChildren<T>(true))
         {
             if (component.name.Equals(name))
                 return component;

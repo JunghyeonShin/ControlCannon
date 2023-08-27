@@ -24,7 +24,7 @@ public class CastleController : MonoBehaviour, ICastleController
     private const float EMPTY_HEALTH = 0f;
     private const int DAMAGED_VALUE = 1;
 
-    private readonly Vector3 DEFAULT_CASTLE_SCALE = new Vector3(0.3f, 0.3f, 0.3f);
+    private readonly Vector3 DEFAULT_CASTLE_SCALE = new Vector3(0.4f, 0.4f, 0.4f);
 
     private void Awake()
     {

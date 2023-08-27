@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    private DataManager _data;
     private ObjectManager _object;
     private ResourceManager _resource;
     private StageManager _stage;
     private UIManager _uI;
 
+    public DataManager Data { get { return _data; } }
     public ObjectManager Object { get { return _object; } }
     public ResourceManager Resource { get { return _resource; } }
     public StageManager Stage { get { return _stage; } }
@@ -18,11 +20,13 @@ public class Manager : MonoBehaviour
     {
         CreateInstance();
 
+        _data = new DataManager();
         _resource = new ResourceManager();
         _stage = new StageManager();
         _uI = new UIManager();
         _object = new ObjectManager();
 
+        _data.Init();
         _stage.Init();
         _uI.Init();
         _object.Init();

@@ -12,7 +12,7 @@ public class StageMakerEditor : Editor
 {
 
     private string _fileName;
-    private Stage _stage;
+    private StageData _stage;
 
     public override void OnInspectorGUI()
     {
@@ -71,15 +71,15 @@ public class StageMakerEditor : Editor
     private void _MakeStage(StageMaker stageMaker)
     {
         if (null == _stage)
-            _stage = new Stage();
+            _stage = new StageData();
 
         _stage.CastlePosition = stageMaker.Castle.transform.localPosition;
         _stage.CastleRotation = stageMaker.Castle.transform.localEulerAngles;
 
-        _stage.Gates = new Stage.Gate[stageMaker.GatesInfo.Length];
+        _stage.Gates = new StageData.Gate[stageMaker.GatesInfo.Length];
         for (int ii = 0; ii < _stage.Gates.Length; ++ii)
         {
-            _stage.Gates[ii] = new Stage.Gate();
+            _stage.Gates[ii] = new StageData.Gate();
             _stage.Gates[ii].Multiplier = stageMaker.GatesInfo[ii].Multiplier;
             _stage.Gates[ii].GateType = stageMaker.GatesInfo[ii].GateType.ToString();
             _stage.Gates[ii].GatePosition = stageMaker.GatesInfo[ii].Gate.transform.localPosition;
@@ -87,10 +87,10 @@ public class StageMakerEditor : Editor
         }
 
         var obstacles = stageMaker.ObstacleRoot.GetComponentsInChildren<Collider>();
-        _stage.Obstacles = new Stage.Obstacle[obstacles.Length];
+        _stage.Obstacles = new StageData.Obstacle[obstacles.Length];
         for (int ii = 0; ii < _stage.Obstacles.Length; ++ii)
         {
-            _stage.Obstacles[ii] = new Stage.Obstacle();
+            _stage.Obstacles[ii] = new StageData.Obstacle();
             _stage.Obstacles[ii].ObstacleName = obstacles[ii].name;
             _stage.Obstacles[ii].ObstaclePosition = obstacles[ii].transform.localPosition;
             _stage.Obstacles[ii].ObstacleRotation = obstacles[ii].transform.localEulerAngles;
